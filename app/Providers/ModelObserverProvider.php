@@ -15,6 +15,7 @@ use GitScrum\Models\Sprint;
 use GitScrum\Models\Status;
 use GitScrum\Models\UserStory;
 use GitScrum\Models\Organization;
+use GitScrum\Models\Board;
 use GitScrum\Observers\AttachmentObserver;
 use GitScrum\Observers\BranchObserver;
 use GitScrum\Observers\CommentObserver;
@@ -27,6 +28,7 @@ use GitScrum\Observers\SprintObserver;
 use GitScrum\Observers\StatusObserver;
 use GitScrum\Observers\UserStoryObserver;
 use GitScrum\Observers\OrganizationObserver;
+use GitScrum\Observers\BoardObserver;
 
 class ModelObserverProvider extends ServiceProvider
 {
@@ -44,6 +46,8 @@ class ModelObserverProvider extends ServiceProvider
         Status::observe(StatusObserver::class);
         UserStory::observe(UserStoryObserver::class);
         Organization::observe(OrganizationObserver::class);
+        Board::observe(BoardObserver::class);
+
     }
 
     public function register()

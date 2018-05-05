@@ -4,7 +4,10 @@ namespace GitScrum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Boards extends Model
+class Board extends Model
 {
     //
+	protected $table='boards';
+	protected $guarded=['id'];
+
 }

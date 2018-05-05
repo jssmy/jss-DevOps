@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
 use Auth;
- 
+ use GitScrum\Models\Board;
 class ProductBacklogController extends Controller
 {
     /**
@@ -45,9 +45,12 @@ class ProductBacklogController extends Controller
     {
         //dd($request->all());
         $data= $request->all();
-        $productBacklog = ProductBacklog::create($data);
+        //$productBacklog = ProductBacklog::create($data);
         
-
+        Board::create([
+            'name'=>'sdsds',
+            'desc'=>'asdfdf',
+        ]);
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
             ->with('success','Se ha agregado a favoritos');
     }
@@ -66,27 +69,8 @@ class ProductBacklogController extends Controller
             ->with('userStories')
             ->first();
 
-        $sprints = $productBacklog->sprints()
-            ->with('productBacklog')
-            ->with('favorite')
-            ->with('issues.users')
-            ->with('issues')
-            ->paginate(env('APP_PAGINATE'));
-
-        $userStories = $productBacklog->userStories();
-
-        if ($request->user_story) {
-            $userStories->where('title', 'like', '%'.$request->user_story.'%');
-            $search = $request->user_story;
-        }
-
-        $userStories = $userStories->with('issues')
-            ->paginate(env('APP_PAGINATE'));
-
         return view('product_backlogs.show')
             ->with('productBacklog', $productBacklog)
-            ->with('sprints', $sprints)
-            ->with('userStories', $userStories)
             ->with('search', (!isset($search)) ? null : $search);
     }
 
