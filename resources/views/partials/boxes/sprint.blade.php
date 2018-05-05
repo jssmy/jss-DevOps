@@ -28,7 +28,7 @@
     {{ $list->links() }}
     @endif
 @else
-    @include('errors.notification-message', ['notification' => ['message' => trans('gitscrum.you-are-not-a-member-of-any-sprint') .
-        '. <a href="'.route('sprints.index').'" class="font-bold">'. trans('gitscrum.list-sprint-backlog') . '</a>',
+    @include('errors.notification-message', ['notification' => ['message' =>'No tiene actividades programadas' .
+        '. <a href="'.route('sprints.index').'" class="font-bold">'.'Registrar actividades'. '</a>',
         'alert' => 'warning', 'class' => 'padding-none list-sprint-empty']])
 @endif

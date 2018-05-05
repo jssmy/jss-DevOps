@@ -13,12 +13,8 @@
 
                 <div class="text-center">
                     @if($repositories->count())
-                        <h4>{{trans('Los repositorios han sido agregados')}}</h4>
-                        <h5>{{trans('También puede agregar los issues a')}} jssDevOps</h5>
-                    @else
-                        <h4>{{trans('gitscrum.choose-at-least-one-repository')}}</h4>
-                        <h5>{{trans('gitscrum.you-can-click')}} <a href="{{route('wizard.step1','github')}}">{{trans('gitscrum.here')}}</a>
-                            {{trans('gitscrum.to-try-again')}}</h5>
+                        <h4>Los repositorios han sido agregados</h4>
+                        <h5>trans('También puede agregar los issues a {{Config::get('app.name')}}</h5>  
                     @endif
                 </div>
 
@@ -52,7 +48,7 @@
                     @else
 
                         <div class="text-left">
-                            <h4 class="pb30">{{trans('gitscrum.create-your-first-repository')}}</h4>
+                            <h4 class="pb30">Puedes crear tu primer repositorio</h4>
                             @include('partials.forms.product-backlog', ['route' => 'product_backlogs.store'])
                         </div>
 

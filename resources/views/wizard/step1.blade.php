@@ -11,8 +11,8 @@
             <div class="content-area">
 
                 <div class="text-center">
-                    <h4>{{trans('gitscrum.you-can-import-the-repositories-to-GitScrum')}}</h4>
-                    <h5>{{trans('gitscrum.you-have')}} {{$repositories->count()}} {{trans('gitscrum.repositories')}}</h5>
+                    <h4>Puedes importar tus repositorios a <strong>{{ Config::get('app.name') }}</strong></h4>
+                    <h5>Tienes {{$repositories->count()}} proyectos en github</h5>
                 </div>
 
                 <form action="{{route('wizard.step2','github')}}" method="post">
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button class="btn btn-lg btn-success btn-loader">{{trans('gitscrum.confirm-to-add-repositories-into-the')}} <strong>jssDevOps</strong></button>
+                        <button class="btn btn-lg btn-success btn-loader">Añadir repositorios a <strong>{{ Config::get('app.name') }}</strong></button>
                     </div>
 
                 </form>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
 use Auth;
-
+ 
 class ProductBacklogController extends Controller
 {
     /**
@@ -16,7 +16,9 @@ class ProductBacklogController extends Controller
      */
     public function index(Request $request, $mode = 'default')
     {
-        $backlogs = ProductBacklog::paginate(env('APP_PAGINATE'));
+
+        $backlogs = ProductBacklog::where('user_id',Auth::user()->githubUser()->id)
+        ->paginate(env('APP_PAGINATE'));
         return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }
@@ -47,7 +49,7 @@ class ProductBacklogController extends Controller
         
 
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
-            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-created-with-successfully'));
+            ->with('success','Se ha agregado a favoritos');
     }
 
     /**
@@ -118,7 +120,7 @@ class ProductBacklogController extends Controller
         $productBacklog->update($request->all());
 
         return back()
-            ->with('success', trans('gitscrum.congratulations-the-product-backlog-has-been-updated-with-successfully'));
+            ->with('success','Se ha actualizado sin problemas');
     }
 
     /**
