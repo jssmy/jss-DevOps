@@ -56,7 +56,7 @@
         <h4 class="gs-card-title">Accesos rápidos</h4>
         <div class="gs-card-content">
             <a href="{{route('issues.index',['slug' => 0])}}">Actividades Programadas</a>
-            
+                
         </div>
     </div>
 

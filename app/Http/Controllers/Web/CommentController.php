@@ -10,7 +10,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         resolve('CommentService')->create($request);
-        return back()->with('success', trans('gitscrum.comment-added-successfully'));
+        return back()->with('success','Comentario agregado');
     }
 
     public function edit($id)
@@ -27,7 +27,7 @@ class CommentController extends Controller
     public function update(CommentRequest $request, $id)
     {
         resolve('CommentService')->update($request);
-        return back()->with('success', trans('gitscrum.comment-updated-successfully'));
+        return back()->with('success','Comentario actualizado');
     }
 
     public function destroy($id)
@@ -36,6 +36,6 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return back()->with('success', trans('gitscrum.comment-deleted-successfully'));
+        return back()->with('success','Comentario eliminado');
     }
 }

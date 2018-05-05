@@ -4,7 +4,7 @@
     <div class="gs-card-content">
 
         @if(isset($percentage))
-            @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' => trans('gitscrum.completed')])
+            @include('partials.boxes.progress-bar', [ 'percentage' => $percentage, 'title' =>'Completado'])
         @endif
 
         <div class="dd" id="nestable">
