@@ -32,9 +32,24 @@
             <span class="help-block m-b-none"></span>
         </div>
     </div>
+    @if(!Auth::user()->slack)
     <div class="form-group">
-                
+        <div class="col-sm-12">
+            <a href="{{route('auth.provider', ['provider' => 'slack'])}}" target="_blank" class="text-middle btn btn-default">
+            Integrar con slack <i class="fa fa-slack" aria-hidden="true"></i> 
+            </a>
+        </div>
     </div>
+    @else
+    <div class="form-group">
+        <div class="col-sm-12">
+            <a href="{{route('auth.provider', ['provider' => 'slack'])}}" target="_blank" class="text-middle btn btn-default">
+            Enviar invitaciones a slack <i class="fa fa-slack" aria-hidden="true"></i> 
+            </a>
+        </div>
+    </div>
+    @endif
+
     <div class="hr-line-dashed"></div>
     @include('partials.includes.form-btn-submit', ['action' => @$action])
 </form>

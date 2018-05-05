@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use GitScrum\Classes\Github;
 use GitScrum\Classes\Trello;
 use GitScrum\Classes\Google;
+use GitScrum\Classes\Slack;
 
 use Config;
 
@@ -42,10 +43,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('Trello', function () {
             return new Trello();
         });
+        $this->app->singleton('Slack', function () {
+            return new Slack();
+        });
     }
 
     public function provides()
     {
-        return ['Github','Google','Trello'];
+        return ['Github','Google','Trello','Slack'];
     }
 }

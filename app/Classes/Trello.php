@@ -7,8 +7,6 @@ use Carbon;
 
 class Trello
 { 
-    
-
     public function tplUser($obj)
     { 
         //dd($obj);

@@ -7,7 +7,7 @@
     <h3>Proyecto</h3>
 </div>
 <div class="col-lg-6 text-right">
-    <a href="#" class="btn btn-sm btn-success">
+    <a href="{{route('chat.show', ['slug' => $productBacklog->slug])}}" class="btn btn-sm btn-success">
         <i class="fa fa-slack" aria-hidden="true"></i> 
         Conversión
     </a> |

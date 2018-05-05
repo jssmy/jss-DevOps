@@ -113,13 +113,13 @@ class AuthController extends Controller
                     break;
             }
             Auth::user()->save();
+            
             return redirect()->route('wizard.step1',$provider);
-
         }
         
         
         
-        if($provider=='google')auth()->login($user);
+        if($provider=='google') auth()->login($user);
          
 
         return redirect()->route('user.dashboard');
