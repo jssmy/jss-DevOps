@@ -113,7 +113,8 @@ class AuthController extends Controller
                     break;
             }
             Auth::user()->save();
-            return redirect()->route('wizard.step1',$provider);
+            return redirect()->route('user.dashboard');
+            ///return redirect()->route('wizard.step1',$provider);
 
         }
         

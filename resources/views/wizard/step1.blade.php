@@ -62,7 +62,7 @@
 
                     <div class="text-center">
                         <button class="btn btn-lg btn-success btn-loader">
-                        confirm to add boards into the <strong>jssDevOps</strong></button>
+                        confirm to add boards into the <strong>{{ Config::get('app.name') }}</strong></button>
                     </div>
 
                 </form>

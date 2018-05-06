@@ -45,12 +45,12 @@ class ProductBacklogController extends Controller
     {
         //dd($request->all());
         $data= $request->all();
-        //$productBacklog = ProductBacklog::create($data);
-        
+        $productBacklog = ProductBacklog::create($data);
+        /*
         Board::create([
             'name'=>'sdsds',
             'desc'=>'asdfdf',
-        ]);
+        ]);*/
         return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
             ->with('success','Se ha agregado a favoritos');
     }

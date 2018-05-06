@@ -4,24 +4,52 @@ namespace GitScrum\Observers;
 
 use GitScrum\Models\Board;
 use Auth;
-use GitScrum\Classes\Helper;
-//use GitScrum\Config;
+use Stevenmaguire\Services\Trello\Client as TrelloClient;
+
+
 class BoardObserver
 {
+
+    private $trello_client;
+
+
     public function creating(Board $board)
     {
-    	/*$key=env('TRELLO_CLIENT_ID');
-    	dd(Auth::user());
-    	$token=Auth::user()->trelloUser()->token;
-      	$url='https://api.trello.com/1/boards/?name=_NAME_&desc=_DESC_&key=_KEY_&token=_TOKEN_';
-      	$url=str_replace(
-      		['_NAME_','_DESC_','_KEY_','_TOKEN_'],
-      		[$board->name,$board->desc,$key,$token],
-      		$url);
-
-      		dd($url);
-    	//Helper::request();
-*/
+    	      	
+    	$b= $this->post_createBoardTrello($board->name,$board->desc);
+    	dd($b);
     }
+
+    
+
+
+    private function post_createBoardTrello($project_name,$project_desc){
+        $result= $this->connect_trello();
+        if(!$result){
+            return [];
+        }
+        $attributes = ['name'=>$project_name,'desc'=>$project_desc];
+        $board = $this->trello_client->addBoard($attributes);
+        return $board;
+    }
+
+
+    /*******/
+    public function connect_trello(){
+	    $user= Auth::user()->trelloUser();
+	    $this->trello_client = new TrelloClient([
+	        'domain' => 'https://trello.com',
+	        'key' =>env('TRELLO_CLIENT_ID'),
+	        'scope' => 'read,write',
+	        'token'  =>$user->token,
+	        'version' => '1',
+	        ]);
+	    return true;
+    }
+
+
+
+
+
 }
  
