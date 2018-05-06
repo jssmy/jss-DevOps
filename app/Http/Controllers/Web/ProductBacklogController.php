@@ -19,7 +19,7 @@ class ProductBacklogController extends Controller
 
         $backlogs = ProductBacklog::where('user_id',Auth::user()->githubUser()->id)
         ->paginate(env('APP_PAGINATE'));
-        return view('chat.index-'.$mode)
+        return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }
 
@@ -46,11 +46,6 @@ class ProductBacklogController extends Controller
         //dd($request->all());
         $data= $request->all();
         $productBacklog = ProductBacklog::create($data);
-<<<<<<< HEAD
-        //yata
-
-=======
->>>>>>> aaef2404d17f1443341497b00c61ac7d21a20aaa
         /*
         Board::create([
             'name'=>'sdsds',
