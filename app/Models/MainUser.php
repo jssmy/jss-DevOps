@@ -29,9 +29,5 @@ class MainUser extends Authenticatable
         return User::where('provider','trello')
                     ->where('main_user_id',$this->id)->first();
     }
-
-   
-
-
 }
 

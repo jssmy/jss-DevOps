@@ -67,14 +67,15 @@ Route::group(['prefix' => 'auth'], function () {
 
 
 Route::group(['prefix' => 'chat', 'middleware' => ['user.authenticated']], function () {
-    Route::get('/show', 'Web\ProductBacklogController@store')->name('chat.show');
-    Route::post('/store', 'Web\ProductBacklogController@store')->name('chat.store');
-    Route::get('/update/{slug}', 'Web\ProductBacklogController@update')->name('chat.update');
-    Route::get('/destroy/{id}', 'Web\ProductBacklogController@destroy')->name('chat.destroy');
+    Route::get('/{slug}', 'Web\ChatController@store')->name('chat.show');
 });
 
-
-
+Route::group(['prefix' => 'message', 'middleware' => ['user.authenticated']], function () {
+    Route::get('/list/{slug}', 'Web\MessageController@store')->name('message.list');
+    Route::post('/store', 'Web\MessageController@store')->name('message.store');
+    Route::get('/update/{slug}', 'Web\MessageController@update')->name('message.update');
+    Route::get('/destroy/{id}', 'Web\MessageController@destroy')->name('message.destroy');
+});
 
 Route::group(['prefix' => 'product-backlogs', 'middleware' => ['user.authenticated']], function () {
     Route::get('/list/{mode?}', 'Web\ProductBacklogController@index')

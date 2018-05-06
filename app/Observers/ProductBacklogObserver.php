@@ -43,9 +43,15 @@ class ProductBacklogObserver
     {
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
+        
+        dd($owner->username);
+
         $repos = app(Auth::user()->githubUser()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
+        
+       
         // skip update if repos object is null to prevent error
         if (! is_null($repos)) {
+            //dd($repos);
             $productBacklog->html_url = $repos->html_url;
             $productBacklog->ssh_url = $repos->ssh_url;
             $productBacklog->clone_url = $repos->clone_url;

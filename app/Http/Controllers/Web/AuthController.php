@@ -111,9 +111,9 @@ class AuthController extends Controller
             }
             Auth::user()->save();
             if($provider == 'slack'){
-                ProductBacklog::Update(['slack'=>1, 'slack_id'=>$id]);
+                //ProductBacklog::Update(['slack'=>1, 'slack_id'=>$id]);
                 
-                return redirect()->route('product_backlogs.index',$provider);
+                return redirect()->route('product_backlogs.index');
             }
             else
                 return redirect()->route('wizard.step1',$provider);
