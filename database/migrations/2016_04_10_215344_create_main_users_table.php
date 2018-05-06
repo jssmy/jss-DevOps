@@ -25,13 +25,8 @@ class CreateMainUsersTable extends Migration
             $table->string('password')->nullable();
             $table->boolean('github')->default(0);
             $table->boolean('trello')->default(0);
-            $table->boolean('slack')->default(0);
             $table->rememberToken();
             $table->timestamps();
-
-                        
-
-            
         });
     }
 

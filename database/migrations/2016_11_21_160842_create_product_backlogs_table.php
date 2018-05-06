@@ -31,8 +31,13 @@ class CreateProductBacklogsTable extends Migration
             $table->string('homepage')->nullable();
             $table->string('default_branch')->nullable();
             $table->integer('position')->unsigned()->nullable()->default(0);
+            $table->boolean('slack')->default(0);
+            $table->integer('slack_id')->unsigned()->nullable()->index('fk_product_backlogs_slack_id_idx');;
             $table->timestamps();
             $table->softDeletes();
+            
+
+            
         });
     }
 

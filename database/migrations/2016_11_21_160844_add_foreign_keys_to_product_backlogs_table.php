@@ -13,6 +13,7 @@ class AddForeignKeysToProductBacklogsTable extends Migration
         Schema::table('product_backlogs', function (Blueprint $table) {
             $table->foreign('organization_id', 'fk_product_backlogs_organization_id')->references('id')->on('organizations')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('user_id', 'fk_product_backlogs_user_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('slack_id', 'fk_product_backlogs_slack_id')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -24,6 +25,7 @@ class AddForeignKeysToProductBacklogsTable extends Migration
         Schema::table('product_backlogs', function (Blueprint $table) {
             $table->dropForeign('fk_product_backlogs_organization_id');
             $table->dropForeign('fk_product_backlogs_user_id');
+            $table->dropForeign('fk_product_backlogs_slack_id');
         });
     }
 }
