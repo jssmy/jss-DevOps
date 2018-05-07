@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "441cc020bd2849efe8357dbeac2ed025",
+    "content-hash": "f45b5e43c6e45e26b2dd6629ab67d3c3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2321,6 +2321,58 @@
                 "transform"
             ],
             "time": "2018-02-07T23:06:44+00:00"
+        },
+        {
+            "name": "stevenmaguire/trello-php",
+            "version": "0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stevenmaguire/trello-php.git",
+                "reference": "237a871393de66b071641137a86aa618becb70c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stevenmaguire/trello-php/zipball/237a871393de66b071641137a86aa618becb70c2",
+                "reference": "237a871393de66b071641137a86aa618becb70c2",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "league/oauth1-client": "^1.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*@dev",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stevenmaguire\\Services\\Trello\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steven Maguire",
+                    "email": "stevenmaguire@gmail.com",
+                    "homepage": "http://stevenmaguire.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP wrapper for Trello API",
+            "homepage": "http://github.com/stevenmaguire/trello-php",
+            "keywords": [
+                "client",
+                "php",
+                "trello",
+                "trello gold",
+                "wrapper"
+            ],
+            "time": "2018-03-28T17:43:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

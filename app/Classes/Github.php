@@ -160,7 +160,7 @@ class Github implements ProviderInterface
             $oldTitle = str_slug($oldTitle, '-');
             $response = Helper::request('https://api.github.com/repos/'.$owner.DIRECTORY_SEPARATOR.$oldTitle, true, 'POST', $params);
         }
-
+        //dd($response);
         return (object) $response;
     }
 

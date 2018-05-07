@@ -47,6 +47,7 @@ class ProductBacklogObserver
         dd($owner->username);
 
         $repos = app(Auth::user()->githubUser()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
+<<<<<<< HEAD
         
        
         // skip update if repos object is null to prevent error
@@ -56,6 +57,15 @@ class ProductBacklogObserver
             $productBacklog->ssh_url = $repos->ssh_url;
             $productBacklog->clone_url = $repos->clone_url;
             $productBacklog->url = $repos->url;
+=======
+        //dd($repos);
+        // skip update if repos object is null to prevent error
+        if (! is_null($repos) && $repos->message!='Not Found') {
+            $productBacklog->html_url = (!isset($repos->html_url) ? null : $repos->html_url);
+            $productBacklog->ssh_url =  (!isset($repos->ssh_url)? null: $repos->ssh_url);
+            $productBacklog->clone_url = (!isset($repos->clone_url)?null: $repos->clone_url);
+            $productBacklog->url = (!isset($repos->url)?null: $repos->url);
+>>>>>>> aaef2404d17f1443341497b00c61ac7d21a20aaa
         }
     }
 }

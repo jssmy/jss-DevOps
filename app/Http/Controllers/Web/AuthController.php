@@ -116,7 +116,9 @@ class AuthController extends Controller
                 return redirect()->route('product_backlogs.index');
             }
             else
-                return redirect()->route('wizard.step1',$provider);
+                return redirect()->route('user.dashboard');
+            ///return redirect()->route('wizard.step1',$provider);
+
         }
         
         if($provider=='google') auth()->login($user);

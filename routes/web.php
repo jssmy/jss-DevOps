@@ -26,7 +26,7 @@ Route::get('/register', function(){
 
 Route::get('/dashboard', 'Web\UserController@dashboard')
 ->name('user.dashboard')
-->middleware('user.authenticated','wizard.application','product-backlog');
+->middleware('user.authenticated','wizard.application');
  
 
 

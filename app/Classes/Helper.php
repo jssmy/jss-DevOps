@@ -102,6 +102,7 @@ class Helper
 
         if (!is_null($postFields)) {
             $postFields = json_encode($postFields);
+
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json',
@@ -112,10 +113,11 @@ class Helper
         if (!is_null($customRequest)) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $customRequest); //'PATCH'
         }
-        
-        if ($auth && isset($user->username)) {
+        //dd($user->provider);
+        if ($auth && isset($user->username) && $user->provider!='Trello') {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
             curl_setopt($ch, CURLOPT_USERPWD, $user->username.':'.$user->token);
+            //dd('hola');
         }
 
 
@@ -124,7 +126,7 @@ class Helper
         //dd($result);
         curl_close($ch);
 
-
+        //dd($result);
         return json_decode($result);
     }
 

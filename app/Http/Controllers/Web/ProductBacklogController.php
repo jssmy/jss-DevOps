@@ -46,8 +46,11 @@ class ProductBacklogController extends Controller
         //dd($request->all());
         $data= $request->all();
         $productBacklog = ProductBacklog::create($data);
+<<<<<<< HEAD
         //yata
 
+=======
+>>>>>>> aaef2404d17f1443341497b00c61ac7d21a20aaa
         /*
         Board::create([
             'name'=>'sdsds',
