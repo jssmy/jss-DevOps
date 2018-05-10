@@ -49,6 +49,7 @@ class AuthController extends Controller
             return Socialite::driver('trello')->redirect();   
         }
         if($provider=='slack'){
+            //dd($provider);
             return Socialite::driver('slack')->redirect();      
         }
     }
@@ -56,15 +57,13 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         //viene aca
-        /// que hacen referencia a esta funcion
-    
+        // que hacen referencia a esta funcion
         
         if (\Request::has('denied')) {
             return redirect()->route('auth.login');
             //en caso haya seleccionado cancelar
             //redirige a la ruta de nombre auth.login
         }
-
 
         $providerUser = Socialite::driver($provider)->user();
         //$proviuder User obtiene los datos del usuario
@@ -110,13 +109,15 @@ class AuthController extends Controller
                     break;
             }
             Auth::user()->save();
-            //if($provider == 'slack'){
-                //ProductBacklog::Update(['slack'=>1, 'slack_id'=>$id]);
+            //dd($provider);
+            if($provider == 'slack' && !is_null($id)){
+                //dd(request()->input('backlog_id'));
+                //ProductBacklog::find($id)->update(['slack'=>1, 'slack_id'=>$id]);
                 
-                //return redirect()->route('product_backlogs.index');
-            //}
-           // else
-                return redirect()->route('user.dashboard');
+                return redirect()->route('product_backlogs.index');
+            }
+            // else
+            return redirect()->route('user.dashboard');
         }
         
         if($provider=='google') auth()->login($user);

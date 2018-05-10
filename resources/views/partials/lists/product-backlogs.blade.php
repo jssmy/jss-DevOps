@@ -23,14 +23,18 @@
            title="Crear cronograma de actividades">
             <i class="fa fa-trello" aria-hidden="true"></i>
         </a>
-        @if(!Auth::user()->slack)
-        <a href="{{route('auth.provider', ['provider' => 'slack'])}}" target="_blank" class="text-middle icon-github"
+        @if(!$list->slack)
+        <a href="{{route('auth.provider', ['provider' => 'slack', 'backlog' => $list->id])}}" class="text-middle icon-github"
            data-toggle="tooltip" data-placement="left"
            title="Integrar con Slack">            
             <i class="fa fa-slack" aria-hidden="true"></i> 
         </a>
         @else
-
+        <a href="{{route('auth.provider', ['provider' => 'slack'])}}" target="_blank" class="text-middle icon-github"
+            data-toggle="tooltip" data-placement="left"
+            title="Ir a Chat">            
+             <i class="fa fa-slack" aria-hidden="true"></i> 
+        </a>
         @endif
 
     </td>

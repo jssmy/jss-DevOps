@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use GitScrum\Http\Requests\ProductBacklogRequest;
 use GitScrum\Models\ProductBacklog;
 use Auth;
- use GitScrum\Models\Board;
+use GitScrum\Models\Board;
+
 class ProductBacklogController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class ProductBacklogController extends Controller
 
         $backlogs = ProductBacklog::where('user_id',Auth::user()->githubUser()->id)
         ->paginate(env('APP_PAGINATE'));
+        //dd($backlogs);
         return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }
