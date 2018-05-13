@@ -99,4 +99,8 @@ class User extends Authenticatable
         return $this->provider_id;
     }
 
+    public function slackUserId(){
+        return $this->provider_id;
+    }
+
 }

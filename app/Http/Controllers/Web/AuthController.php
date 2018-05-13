@@ -48,9 +48,17 @@ class AuthController extends Controller
             //de aca
             return Socialite::driver('trello')->redirect();   
         }
-        if($provider=='slack'){
+        if(is_numeric($provider)){
             //dd($provider);
-            return Socialite::driver('slack')->redirect();      
+            Session::put('slack.backlog_id', $provider);
+            return Socialite::driver('slack')
+                ->scopes([
+                    'channels:history',
+                    'channels:read',
+                    'channels:write',
+                    'chat:write:user',
+                    'users:read'
+                ])->redirect();      
         }
     }
  
@@ -109,10 +117,11 @@ class AuthController extends Controller
                     break;
             }
             Auth::user()->save();
-            //dd($provider);
-            if($provider == 'slack' && !is_null($id)){
+            $backlog_id = Session::get('slack.backlog_id');
+            Session::forget('slack.backlog_id');
+            if($provider == 'slack'){
                 //dd(request()->input('backlog_id'));
-                //ProductBacklog::find($id)->update(['slack'=>1, 'slack_id'=>$id]);
+                ProductBacklog::find($backlog_id)->update(['slack'=>1, 'slack_id'=>$id]);
                 
                 return redirect()->route('product_backlogs.index');
             }

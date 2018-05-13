@@ -8,6 +8,8 @@ use GitScrum\Models\ProductBacklog;
 use Auth;
 use GitScrum\Models\Board;
 
+
+
 class ProductBacklogController extends Controller
 {
     /**
@@ -20,7 +22,7 @@ class ProductBacklogController extends Controller
 
         $backlogs = ProductBacklog::where('user_id',Auth::user()->githubUser()->id)
         ->paginate(env('APP_PAGINATE'));
-        //dd($backlogs);
+        //dd($backlogs); jaja que haces oe
         return view('product_backlogs.index-'.$mode)
             ->with('backlogs', $backlogs);
     }
@@ -43,18 +45,21 @@ class ProductBacklogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductBacklogRequest $request)
+    public function store(ProductBacklogRequest $request, $mode='default')
     {
-        //dd($request->all());
+        // :v
+        
         $data= $request->all();
         $productBacklog = ProductBacklog::create($data);
-        /*
-        Board::create([
-            'name'=>'sdsds',
-            'desc'=>'asdfdf',
-        ]);*/
-        return redirect()->route('product_backlogs.show', ['slug' => $productBacklog->slug])
-            ->with('success','Se ha agregado a favoritos');
+        
+
+        /*$backlogs = ProductBacklog::where('user_id',Auth::user()->githubUser()->id)
+        ->paginate(env('APP_PAGINATE'));*/
+        
+        return redirect()->route('product_backlogs.index');
+        // modificaste algi
+    
+        
     }
 
     /**
@@ -66,6 +71,7 @@ class ProductBacklogController extends Controller
      */
     public function show(Request $request, $slug)
     {
+        
         $productBacklog = ProductBacklog::slug($slug)
             ->with('sprints')
             ->with('userStories')

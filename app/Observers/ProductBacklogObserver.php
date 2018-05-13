@@ -43,11 +43,11 @@ class ProductBacklogObserver
     {
         $oldRepos = ProductBacklog::find($productBacklog->id);
         $owner = Organization::find($productBacklog->organization_id);
-        
-        dd($owner->username);
+        ///puto de mrd :v
+        //dd($owner->username);
 
         $repos = app(Auth::user()->githubUser()->provider)->createOrUpdateRepository($owner->username, $productBacklog, $oldRepos->title);
-        //dd($repos);
+        
         // skip update if repos object is null to prevent error
         if (! is_null($repos) && $repos->message!='Not Found') {
             $productBacklog->html_url = (!isset($repos->html_url) ? null : $repos->html_url);

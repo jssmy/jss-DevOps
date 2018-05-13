@@ -51,7 +51,7 @@ class ProductBacklog extends Model
     {
         return $this->hasOne(Organization::class, 'id', 'organization_id');
     }
-
+    
     public function sprints()
     {
         return $this->hasMany(Sprint::class, 'product_backlog_id', 'id');

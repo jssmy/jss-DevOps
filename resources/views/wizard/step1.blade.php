@@ -78,7 +78,7 @@
     <div class="aligner">
         <div class="content">
 
-            <h1>jssDevOps</h1>
+            <h1>DevOps</h1>
             
 
         </div>

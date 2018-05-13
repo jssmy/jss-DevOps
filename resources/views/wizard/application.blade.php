@@ -47,6 +47,32 @@
                     </a>
                 @endif
 
+                @if(!Auth::user()->trello)
+                    <a href="{{route('auth.provider', ['provider' => 'trello'])}}" class="btn btn-lg btn-default btn-loader">
+                    <img width="20" src="https://i.imgur.com/4NlMJsK.png?1">&nbsp;&nbsp;<strong>Blazemeter</strong>
+                    </a>    
+                @else
+                    <a  disabled="true" class="btn btn-lg btn-danger">
+                        <i class="fa fa-trello" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Blazemeter
+                            <i class="fa fa-check" aria-hidden="true"></i>
+
+                        </strong>
+                    </a>
+                @endif
+
+                @if(!Auth::user()->trello)
+                    <a href="{{route('auth.provider', ['provider' => 'trello'])}}" class="btn btn-lg btn-default btn-loader">
+                    <img width="20" src="https://png.icons8.com/ios/1600/jenkins-filled.png">&nbsp;&nbsp;<strong>Jenkins</strong>
+                    </a>    
+                @else
+                    <a  disabled="true" class="btn btn-lg btn-danger">
+                        <i class="fa fa-trello" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Jenkins
+                            <i class="fa fa-check" aria-hidden="true"></i>
+
+                        </strong>
+                    </a>
+                @endif
+
 
                 @if( (Auth::user()->github && Auth::user()->trello && Auth::user()->slack ) )
                     <div class="row">
@@ -71,7 +97,7 @@
 
         <div class="aligner">
             <div class="content">
-                <h1>jssDevOps</h1>
+                <h1>DevOps</h1>
                 
 
                 

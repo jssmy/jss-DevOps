@@ -39,8 +39,8 @@ class Github implements ProviderInterface
     public function tplRepository($repo, $slug = false)
     {
 
-        //dd($repo);
-        if(!is_null($repo)){
+        
+        if(!is_null($repo) && !isset($repo->errors)){
             
                 return (object) [
                 'provider_id' => $repo->id,
@@ -123,10 +123,9 @@ class Github implements ProviderInterface
         //dd($repos);
         $response = collect(Helper::request('https://api.github.com/user/repos?page='. $page))->map(
             function ($repo) {
-
-            return $this->tplRepository($repo);
+                return $this->tplRepository($repo);
             }
-    );
+        );
 
         if (is_null($repos)) {
             $repos = collect();
